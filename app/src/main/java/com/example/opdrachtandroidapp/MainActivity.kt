@@ -12,5 +12,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.imageView1.setOnClickListener(){
+            binding.imageView1.setImageResource(R.drawable.hans_naert)
+        }
+
+        binding.imageView2.setOnClickListener(){
+            binding.imageView2.setImageResource(R.drawable.hans_naert)
+        }
+
+        binding.imageView3.setOnClickListener(){
+            binding.imageView3.setImageResource(R.drawable.hans_naert)
+        }
+
+        binding.imageView4.setOnClickListener(){
+            binding.imageView4.setImageResource(R.drawable.hans_naert)
+        }
+
     }
 }
