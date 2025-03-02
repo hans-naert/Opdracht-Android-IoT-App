@@ -1,7 +1,10 @@
 package be.viveselic.androidiotapp
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.ListView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,6 +30,14 @@ class MainActivity : AppCompatActivity() {
                 imageView.tag = "lamp"
                 imageView.setImageResource(R.drawable.lamp)
             }
+        }
+
+        val textView = findViewById<TextView>(R.id.textView)
+
+        val listView = findViewById<ListView>(R.id.listView)
+        listView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOf("Lamp 1", "Lamp 2", "Lamp 3"))
+        listView.setOnItemClickListener { _, _, position, _ ->
+            textView.text = "You clicked on ${listView.getItemAtPosition(position)}"
         }
     }
 }
