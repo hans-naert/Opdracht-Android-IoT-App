@@ -39,5 +39,46 @@ class MainActivity : AppCompatActivity() {
         listView.setOnItemClickListener { _, _, position, _ ->
             textView.text = "You clicked on ${listView.getItemAtPosition(position)}"
         }
+
+        val listViewImage = findViewById<ListView>(R.id.listViewImage)
+
+        data class ListItem(var imageResId: Int, val text: String)
+
+        val listItems = mutableListOf(
+            ListItem(R.drawable.lamp, "Lamp 1"),
+            ListItem(R.drawable.lampoff, "Lamp 2"),
+            ListItem(R.drawable.lamp, "Lamp 3")
+        )
+
+        listViewImage.adapter = object : ArrayAdapter<ListItem>(this, android.R.layout.simple_list_item_1, listItems) {
+            override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+                val view = convertView ?: layoutInflater.inflate(R.layout.list_item, parent, false)
+                val listItem = getItem(position)!!
+
+                val imageView = view.findViewById<ImageView>(R.id.item_image)
+                val textView = view.findViewById<TextView>(R.id.item_text)
+
+                val item = listItems[position]
+                imageView.setImageResource(item.imageResId)
+                textView.text = item.text
+                return view
+            }
+        }
+
+        listViewImage.setOnItemClickListener { _, view, position, _ ->
+            val imageView = view.findViewById<ImageView>(R.id.item_image)
+
+            val item = listItems[position]
+            item.imageResId = if (item.imageResId == R.drawable.lamp) {
+                R.drawable.lampoff
+            } else {
+                R.drawable.lamp
+            }
+            imageView.setImageResource(item.imageResId)
+
+        }
+
+
+
     }
 }

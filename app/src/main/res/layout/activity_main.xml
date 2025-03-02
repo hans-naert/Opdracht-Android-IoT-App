@@ -35,11 +35,18 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="242dp"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <ListView
+        android:id="@+id/listViewImage"
+        android:layout_width="242dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@id/listView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
